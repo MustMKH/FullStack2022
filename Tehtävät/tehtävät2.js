@@ -1,12 +1,13 @@
-/*  Tekemättä: "!!!"
+/*  Tehtävät 5 ja 10-13 vielä tekemättä (hae: "!!!")
     Tutustu slice-komentoon (kts. "Anna-sofian ratkaisu")
+
 
 Tehtävä 2.1
 Tee ohjelma, joka tallentaa yhden viikon viikonpäivät ja niitä vastaavat työtunnit
 taulukkoon. Voit keksiä päiville haluamasi työtunnit, rehellinen pitää kuitenkin olla.*/
 
-funktio1 = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
-    const tuntilista = [
+funktio1a = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
+    const tuntilista = [ 
         { viikonpäivä: "Maanantai", tunnit: maTunnit},
         { viikonpäivä: "Tiistai", tunnit: tiTunnit},
         { viikonpäivä: "Keskiviikko", tunnit: keTunnit},
@@ -16,8 +17,22 @@ funktio1 = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
     return tuntilista
 }
 
+// vai haluttiinko vain tällainen?
+
+funktio1b = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
+    const tuntitaulukko = { 
+        Maanantai: maTunnit,
+        Tiistai: tiTunnit,
+        Keskiviikko: keTunnit,
+        Torstai: toTunnit,
+        Perjantai: peTunnit}
+    return tuntitaulukko
+}
+
 /* console.log("testaus1:")
-console.log(funktio1(7,7,10,1,0))
+console.log(funktio1a(7,7,10,1,0))
+console.log(funktio1b(7,7,10,1,0))
+
 
 Tehtävä 2.2
 Tee tehtävän 2.1 ohjelmaan lisäominaisuus, joka laskee työtuntien keskiarvon
@@ -25,16 +40,23 @@ a) for-rakenteen (forEach, for-silmukka tai for of) avulla
 */
 
 funktio2a = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
-    const tuntilista = [
-        { viikonpäivä: "Maanantai", tunnit: maTunnit},
-        { viikonpäivä: "Tiistai", tunnit: tiTunnit},
-        { viikonpäivä: "Keskiviikko", tunnit: keTunnit},
-        { viikonpäivä: "Torstai", tunnit: toTunnit},
-        { viikonpäivä: "Perjantai", tunnit: peTunnit},
-    ]
+    const tuntilista = funktio1a(maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit);
     var count = 0, tuntienSumma = 0;
     for (var key in tuntilista) {
-        if (tuntilista.hasOwnProperty(key)) {
+        tuntienSumma += tuntilista[key].tunnit;
+                count += 1;
+    }
+    return {tuntilista: tuntilista, keskiarvo: tuntienSumma/count}
+}
+
+/* console.log("testaus 2a:")
+console.log(funktio2a(7,7,10,1,0))
+
+funktio2a = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
+    const tuntilista = funktio1a(maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit)
+    var count = 0, tuntienSumma = 0;
+    for (var key in tuntilista) {
+        if (tuntilista.hasOwnProperty(key)) { // nämä if lausekkeet ovat turhia
             if (tuntilista[key].hasOwnProperty("tunnit")) {
                 tuntienSumma += tuntilista[key].tunnit
                 count += 1;
@@ -42,7 +64,7 @@ funktio2a = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
         }
     }
     return tuntienSumma/count 
-}
+} */
 
 /* console.log("testaus2a:")
 console.log(funktio2a(7,8,10,7,7))
@@ -60,16 +82,37 @@ funktio2b = (maTunnit, tiTunnit, keTunnit, toTunnit, peTunnit) => {
     var lista = Object.values(tuntilista)
     var summa = (edellinen, nykyinen) => ({tunnit: edellinen.tunnit + nykyinen.tunnit})
     var keskiarvo = lista.reduce(summa).tunnit / lista.length
-    return keskiarvo
+    return {tuntilista: tuntilista, keskiarvo: keskiarvo}
 }
 
-/*console.log("testaus2b:")
+/* console.log("testaus2b:")
 console.log(funktio2b(7,8,10,7,7))
 
-Tehtävä 2.3 !!!
+
+Tehtävä 2.3
 Lisää ohjelmaan 2.2 minimin ja maksimin selvittävä osuus.
-a) for-rakenteen (forEach, for-silmukka tai for of) avulla
-b) reduce -funktiolla
+a) for-rakenteen (forEach, for-silmukka tai for of) avulla */
+
+taulukko3a = funktio1a(7,8,10,7,7)
+minimi = taulukko3a[0].tunnit
+maksimi = taulukko3a[0].tunnit
+taulukko3a.forEach(merkintä => {
+    minimi = Math.min(minimi, merkintä.tunnit)
+    maksimi = Math.max(maksimi, merkintä.tunnit)
+})
+
+/* console.log("testaus3a:")
+console.log(taulukko3a, minimi, maksimi)
+
+b) reduce -funktiolla */
+
+taulukko3b = funktio1a(7,8,10,7,7)
+minimi = taulukko3b.reduce((edellinen, merkintä) => Math.min(edellinen, merkintä.tunnit), taulukko3b[0].tunnit)
+maksimi = taulukko3b.reduce((edellinen, merkintä) => Math.max(edellinen, merkintä.tunnit), taulukko3b[0].tunnit)
+
+/* console.log("testaus3b:")
+console.log(taulukko3b, minimi, maksimi)
+
 
 Tehtävä 2.4
 Tee ohjelma, jonka lähtökohtana ovat 12 kuukauden palkkatulot kuukausittain.
@@ -87,6 +130,7 @@ funktio4 = (palkka) => {
 
 /*console.log(funktio4(1000))
 
+
 Tehtävä 2.5 Alla esimerkkejä, tee vielä itse !!!
 Tee ohjelma, jonka lähtökohtana ovat 12 kuukauden bruttopalkat kuukausittain ja
 veroprosentti. Ohjelma luo uuden taulukon ja laskee nettotulot vähentäen jokaisen
@@ -96,7 +140,7 @@ kuukauden bruttopalkasta verot.
 saa parametrina funktion
 month tässä on paikallisesti määräytynyt funktio???/*
 
-function taxCalc(incomelist2){
+taxCalc = (incomelist2) => {
 	incomelist2.forEach((month => {
 		var net = month.income - (month.income/month.tax)
 		var netMonth = {name:month.name, income:net}
@@ -119,7 +163,7 @@ map-operaatio luo automaattisesti uuden listan ja palauttaa sen
 
 tämä on pakko tehdä taulukolla, jos tekee näin (vrt. tuple Pythonissa) */
 
-const bruttoPalkat = {
+/* const bruttoPalkat = {
 	1: [3000, 20],
 	2: [3200, 23],
 	3: [3120, 22],
@@ -142,7 +186,7 @@ const nettoTulot = (taulukko) => {
 	return nettoPalkat
 }
 
-console.log(nettoTulot(bruttoPalkat))
+console.log(nettoTulot(bruttoPalkat)) */
 
 /*Tehtävä 2.6
 Tee ohjelma, joka järjestää taulukon luvut [1,4,100,2,5,4] suuruusjärjestykseen. Käytä
@@ -182,12 +226,12 @@ Sort() järjestää muuttaa listan alkiot merkkijonoiksi ja järjestää ne aakk
 Compare-funktion avulla määritellään sorttauksen järjestys, esim. nouseva järjestys, kuten
 tehtävässä 2.6.  
 
-Tehtävä 2.9 !!! väärin
+Tehtävä 2.9
 Sinulla on [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}]. Luo taulukko, jossa taulukon
 objektit on järjestetty arvojen(values) mukaiseen järjestykseen. */
 
 funktio9 = () => {
-    // ei onnistunut ihan niin kuin piti
+    // !!! ei onnistunut ihan niin kuin piti, taulukko syötetty väärässä muodossa funktioon
     const taulukko = {"ma": 44, "pe": 100, "ke": 21, "ti": 66, "la": 22}
     const lista = []
     for (var alkio in taulukko) {
@@ -199,28 +243,29 @@ funktio9 = () => {
     return lista
 }
 
-console.log("testaus9:")
-console.log(funktio9())
+/* console.log("testaus9:")
+console.log(funktio9()) */
 
 // HEIKIN RATKAISU:
 
-const järjestäOlio = () => {
+/* const järjestäOlio = () => {
     const päivät = [{ma:44},{pe:100},{ke:21},{ti:66},{la:22}]
     return päivät.sort((a,b) => {
         if (Object.values(a)[0] < Object.values(b)[0]) return -1
         if (Object.values(a)[0] === Object.values(b)[0]) return 0
         if (Object.values(a)[0] > Object.values(b)[0]) return -1
     })
-}
+} */
 
 // TOMIN RATKAISU:
 
-const objektiJärjestäjä = () => {
+/* const objektiJärjestäjä = () => {
     const objektit = [{"ma":44},{"pe":100},{"ke":21},{"ti":66},{"la":22}]
     return objektit.sort((a,b) => Object.values(a) - Object.values(b))
 }
 
-console.log("Järjestettynä arvojen mukaan:", objektiJärjestäjä())
+console.log("Järjestettynä arvojen mukaan:", objektiJärjestäjä()) */
+
 
 /* Tehtävä 2.10 !!!
 Sinulla on [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}]. Luo taulukko, jossa taulukon
@@ -229,10 +274,11 @@ ma<ti<ke<to<pe<la<su. */
 
 // ANNA-SOFIAN RATKAISU:
 
-const jarjPaivat = taulukko.slice().sort((a, b) => {
+/* const jarjPaivat = taulukko.slice().sort((a, b) => {
     const paivat = ["ma", "ti", "ke", "to", "pe", "la", "su"]
     return paivat.indexOf(Object.keys(a)[0]) - paivat.indexOf(Object.keys(b)[0])
-})
+}) */
+
 
 /* Tehtävä 2.11 !!!
 Sinulla on [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}]. Luo taulukko, jossa on
@@ -240,7 +286,7 @@ mukana objektit, joissa on parillinen arvo.*/
 
 // BARBARAN RATKAISU:
 
-const objektiLista = [
+/* const objektiLista = [
     {ma:44}
 ]
 
@@ -255,9 +301,10 @@ const parillisetArvot = (taulukko) => {
         }
     }, taulukko [0])
     return uusiObjektiLista
-}
+} */
 
 // parempi luoda ensin tyhjä lista [ ].concat([arvo]) => acc
+
 
 /* Tehtävä 2.12 !!!
 Sinulla on [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}]. Luo taulukko, jossa on
@@ -279,6 +326,7 @@ for(i=0;i<daysC.length;i++) {
 
 console.log("2.12 päivät joiden toinen kirjain E: ")
 console.log(daysWithE) 
+
 
 Tehtävä 2.13 !!!
 Sinulla on [{"ma":44}, {"pe":100}, {"ke":21}, {"ti": 66},{"la":22}]. Tee ohjelma, joka muuttaa objektin

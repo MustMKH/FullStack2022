@@ -1,15 +1,17 @@
 /*  Kysymyksiä löytyy haulla "???" 
-    Tekemättä "!!!"
     HUOM! En muistanut käyttää tehtävissä let/const/var avainsanoja lähes ollenkaan
+
 
 Tehtävä 1.1
 Tee funktio, joka saa parametrina kokonaisluvun. Jos luku on suurempi kuin 100, funktio
 palauttaa: ”syötit luvun, joka on suurempi kuin 100”. Jos luku on 100 tai pienempi,
 palautetaan “” 
 
+
 Tehtävä 1.2
 Muuta tehtävää 1 siten, että se palauttaa ”syötit luvun joka on pienempi kuin 100”
 tapauksessa, jossa käyttäjä argumentin arvo on pienempi kuin sata.
+
 
 Tehtävä 1.3
 Muuta tehtävää 2 siten, että funktio palauttaa tekstin ”luku on 100” jos käyttäjä syöttää
@@ -28,13 +30,14 @@ funktio123=(luku) => {
     }
 }
 
-/* console.log("testaus123:")
+/*console.log("testaus123:")
 console.log(funktio123(99))
 console.log(funktio123(100))
 console.log(funktio123(101))
 console.log(funktio123("ilmapallo")) 
 
-Tehtävä 1.4
+
+ Tehtävä 1.4
 a) Tee funktio, jonka parametreina ovat tunnit, minuutit ja sekunnit ja se palauttaa
 kokonaisajan sekunteina. Esimerkiksi, jos argumenteiksi annetaan 0 tunneiksi, 1
 minuuteiksi 1 ja 1 sekunneiksi, palauttaa funktio 61 sekuntia.
@@ -88,6 +91,7 @@ console.log(funktio4c(15))
 console.log(funktio4c("100"))
 console.log(funktio4c("kekkonen"))
 
+
 Tehtävä 1.5
 Tee funktio, jonka parametrit ovat viikonpäivän numeron ja joka palauttaa viikonpäivän,
 esim. jos argumentti on 1, palautetaan “maanantai”.*/
@@ -121,6 +125,7 @@ console.log(funktio5(8))
 console.log(funktio5(-5))
 console.log(funktio5("Pekka"))
 
+
 Tehtävä 1.6
 Tee funktio, joka saa syötteenä iän ja palauttaa seuraavat tekstit riippuen iästä:
     1-17 “olet alaikäinen”
@@ -150,6 +155,7 @@ console.log(funktio6(32.9999999))
 console.log(funktio6("100"))
 console.log(funktio6("kekkonen")) 
 
+
 Tehtävä 1.7
 Tee funktio, joka saa syötteenä etunimen, sukunimen ja iän. Funktio palauttaa
 merkkijonon muodossa ”Terve etunimi sukunimi, olet ikä vuotias”.*/
@@ -164,19 +170,21 @@ funktio7 = (etunimi,sukunimi,ikä) => {
 console.log(funktio7("aku","ankka",10))
 console.log(funktio7("yabba","dabba","doo"))
 
+
 Tehtävä 1.8
 Tee funktio, joka saa syötteenä syntymävuoden ja suosikkinumeron. Jos syntymävuosi on
 1970 ja suosikkinumero 77, niin palautetaan teksti: ”Olet onnenpekka”. Tee tehtävä
 yhdellä JOS (IF) lauseella.*/
 
 funktio8 = (syntymävuosi,suosikkinumero) => {
-    // ??? sekä "==" että "===" (ja jopa "=") toimii alla? täytyy selvittää, miten näitä käytetään
-    if (syntymävuosi == 1970 && suosikkinumero == 77) return "Olet onnenpekka!"
+    // "==" ei tarkista tyyppiä, "===" tarkistaa tyypin, esim. kun verrataan stringiä "1" numeroon 1
+    if (syntymävuosi === 1970 && suosikkinumero === 77) return "Olet onnenpekka!"
 }
 
 /* console.log("testaus8:")
 console.log("2016 ja 4: " + funktio8("2016",4))
 console.log("1970 ja 77: " + funktio8("1970",77))
+
 
 Tehtävä 1.9
 Tee funktio, joka palauttaa luvut 7-131 (lista/taulukko)*/
@@ -193,6 +201,7 @@ funktio9 = () => {
 console.log(funktio9())
 console.log(funktio9("kekkonen"))
 console.log(funktio9(1,2,3))
+
 
 Tehtävä 1.10
 a) Tee funktio, joka palauttaa lukujen 7-131 summan.
@@ -235,7 +244,9 @@ console.log(funktio10b(3,1))
 console.log(funktio10b("Tiku","Taku"))
 console.log(funktio10b("Taku","Tiku"))
 
+
 Tehtävä 1.11: ei tarvitse tehdä
+
 
 Tehtävä 1.12
 Tee funktio, joka palauttaa parilliset luvut väliltä 0-100.
@@ -256,6 +267,7 @@ funktio12 = () => {
 /* console.log("testaus12:")
 console.log(funktio12()) 
 
+
 Tehtävä 1.13
 Tee funktio, joka palauttaa parillisten kulujen summan lukuväliltä 0-1000.
 Tee tehtävä käyttäen joko for-rakennetta tai reduce-funktiota.*/
@@ -273,7 +285,9 @@ funktio13 = () => {
 /* console.log("testaus13:")
 console.log(funktio13())
 
+
 Tehtävät 1.14 ja 1.15: ei tarvitse tehdä
+
 
 Tehtävä 1.16
 Tee funktio, joka saa syötteenä painon (kg), pituuden (m) ja palauttaa painoindeksin.
@@ -303,6 +317,7 @@ console.log(funktio16(1.70,66))
 console.log(funktio16(25,2.25))
 console.log(funktio16("tiku","taku"))
 
+
 Tehtävä 1.17
 Kirjoita funktio, joka saa syötteenä vuosiluvun ja palauttaa merkkijonon “on” tai “ei” sen
 mukaan onko vuosi karkausvuosi.
@@ -330,6 +345,7 @@ console.log(funktio17("1700"))
 console.log(funktio17(11))
 console.log(funktio17("kekkonen"))
 
+
 Tehtävä 1.18
 Tee funktio, joka saa syötteenä luvun. Mikäli syöte ei ole 1 funktio palauttaa ” Syöte ei ole
 1” .*/
@@ -344,6 +360,7 @@ console.log(funktio18("kekkonen"))
 console.log(funktio18("1"))
 console.log(funktio18(1))
 console.log(funktio18(5))
+
 
 Tehtävä 1.19
 Muuta seuraavan pseudokoodin mukainen ohjelma funktioksi. Keksi itse funktion
@@ -366,35 +383,6 @@ funktio19 = (asteikko, lukema) => {
  console.log(funktio19("f", -25))
  console.log(funktio19("kekkonen", 20))
 
-- - - esimerkki: - - -
-
-const readline = require("readline")
-
-const rl = readline.createInterface({
-	input. process.stdin,
-	output: process.stdout,
-})
-
-function asteikkoMuuntaja(){
-	rl.quetion("Anna asteikko ", function (ast) {
-		if(ast === "C" || ast === "c" || ast === "F" || ast === "f"){
-			rl.question("Anna lukema ", function (luk){
-				if(luk <= 100 && luk > -101){
-					if(ast === "C" || ast === "c"({
-						luk = 9/5 * luk + 32
-					} else {
-						luk = 9/5 * luk - 32
-					}
-					console.log(luk)
-					rl.close()
-				} else {
-					console.log("lukema virheellinen")
-					rl.close()
-				}
-			})
-		} else {
-			console.log("asteikko virheellinen")
-. . . jatka loppuun!!!
 
 Tehtävä 1.20
 Muuta seuraavan pseudokoodin mukainen ohjelma funktioksi funktio. Keksi itse funktion
@@ -413,6 +401,7 @@ console.log(funktio20(50,225))
 console.log(funktio20(5,8))
 console.log(funktio20(-1,0))
 console.log(funktio20(0,0))
+
 
 Tehtävä 1.21
 Laadi funktio, joka saa syötteenä henkilön nimen.. Jos nimi on Pekka, palautetaan
@@ -452,6 +441,7 @@ console.log(funktio21b("jorma"))
 console.log(funktio21b("kekkonen"))
 console.log(funktio21b(100))
 
+
 Tehtävä 1.22
 Seuraavat lauseet ovat tosia:
     Lause A on ”Pekka on vakosamettihousuinen mies”.
@@ -466,37 +456,22 @@ d) (B && !A)                        epätosi
 e) (D && !B || !A) || (!D || A)     tosi
 f) (!(!C && !B) && (!D || B))       tosi
 
-Tehtävä 1.23 !!!
--50 kpl erikokoisia betonielementtejä
--pienin tilavuus: 0.3 * 0.5 * 0.5 (pituus, leveys, korkeus) = 0.075 (m3)
--seuraavan tilavuus = (edellisen pituus * 1.02) * (edellisen leveys * 1.03) * (edellisen korkeus * 1.015)
--paino = tilavuus * 2500
--max 10500 kg / kuorma
--tiheys 2,5 kg/dm 3 
-    -1 m3 = 1000 dm3
-    -2500 kg / m3
--kuinka monta kuormaa? */
 
-/* muodostetaan seuraavaksi lista elementtien painoista kertomalla muodostuneiden listojen samassa paikassa olevat
-alkiot ensin keskenään ja lopuksi kertoimella 2500, jotta saadaan paino (paino = tilavuus x 2500)*/
+Tehtävä 1.23 */
 
-// Villen ratkaisu:
-
-function laskuSuoritus() {
+funktio23 = () => {
     let pituus = 0.3
     let leveys = 0.5
     let korkeus = 0.5
-    let reissujenMaara = 0
+    let kuormienMaara = 1
     let kokonaispaino = 0
     for(i=0; i<50; i++) {
         const kuutioDm = (10*pituus) * (10*leveys) * (10*korkeus)
         const paino = 2.5 * kuutioDm
-        if(kokonaispaino + paino < 10500){
-            kokonaispaino += paino
-        } else {
-            ressujenMaara++;
-            kokonaispaino = 0
-            kokonaispaino += paino
+        kokonaispaino += paino
+        if(kokonaispaino > 10500){
+            reissujenMaara++;
+            kokonaispaino = paino
         }
         pituus *= 1.02
         leveys *= 1.03
@@ -504,7 +479,11 @@ function laskuSuoritus() {
     }
 }
 
-// Anna-sofian ratkaisu (oletetaan että palat saa osiin, koska kuormat tulee kokonaan täyteen lukuunottamatta viimeistä)
+/* console.log("testaus23:")
+console.log(funktio23())
+
+ANNA-SOFIAN RATKAISU:
+oletetaan että palat saa osiin, koska kuormat tulee kokonaan täyteen lukuunottamatta viimeistä)
 
 const ajokerrat = () => {
     let pituus = 0.3
@@ -522,4 +501,5 @@ const ajokerrat = () => {
 
 console.log(ajokerrat())
 
-// Mikon ratkaisu: kts. kuvaruutukaappaus ohjelmointi-kansiossa
+MIKON RATKAISU:
+kts. kuvaruutukaappaus ohjelmointi-kansiossa */
